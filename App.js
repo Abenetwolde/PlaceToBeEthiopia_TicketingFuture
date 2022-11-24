@@ -43,7 +43,7 @@ export default function App() {
             fontWeight: 'bold',
           },
         }} />
-             <Stack.Screen name="RewardScreen" component={Reward} options={{
+             {/* <Stack.Screen name="RewardScreen" component={Reward} options={{
           title: 'Reward Screen',
           headerStyle: {
             backgroundColor: 'white',
@@ -54,7 +54,7 @@ export default function App() {
           headerTitleStyle: {
             fontWeight: 'bold',
           },
-        }} />
+        }} /> */}
      
         {/*     <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="Profile" component={Profile} />

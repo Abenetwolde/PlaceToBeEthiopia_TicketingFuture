@@ -3,13 +3,11 @@ import { SafeAreaView, StyleSheet, Text, View, Image, Button, TouchableOpacity }
 import { Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useDispatch, useSelector } from 'react-redux';
-import AvaliableTickets from '../Components/AvaliableTickets';
 import { addTicket, decrease, getTicketTotal, increase, newItem } from '../redux/Ticket';
 import { Ionicons, FontAwesome, MaterialCommunityIcons } from "react-native-vector-icons";
 
 function PaymentScreen({ navigation }) {
-  const [openButton, setOpenButton] = useState(false);
-  const panelRef = useRef(null);
+  
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -48,10 +46,6 @@ function PaymentScreen({ navigation }) {
   const [active, setActiveIndex] = useState();
   const [disable, setDisable] = useState(false);
 
-  const toggleBottomNavigationView = () => {
-    //Toggling the visibility state of the bottom sheet
-    setVisible(!visible);
-  };
 
   const { items } = useSelector((state) => state.ticket);
   console.log(items[0])
@@ -66,16 +60,21 @@ function PaymentScreen({ navigation }) {
     dispatch(addTicket(newUpdate));
 
   };
+     //Chaing the color of icons 
   useEffect(() => {
     dispatch(getTicketTotal());
   }, [items]);
-  let color;
-  let itemtitle = items.map(function (i) {
-    return i.title;
 
-  });
+
+  let color;
+  // let itemtitle = items.map(function (i) {
+  //   return i.title;
+
+  // });
+
+     //Chaing the color of icons 
   const colors = (c) => {
-    //Toggling the visibility state of the bottom sheet
+ 
     switch (c) {
       case 0:
         color = "#FF5C00";
@@ -104,8 +103,7 @@ function PaymentScreen({ navigation }) {
   };
 
 
-  console.log(itemtitle);
-  console.log(color);
+
   return (
 
     <SafeAreaView style={styles.Main}>
@@ -137,7 +135,7 @@ function PaymentScreen({ navigation }) {
         <Text style={[styles.H1Text, { marginLeft: 20 }]}>Avaliable Tickets</Text>
         {items.map((tik, index) => {
           return (
-            <View key={index} style={[styles.productView, active === index ? { borderLeftWidth: 3, borderLeftColor: "#ffbb00" } : null]}>
+            <View key={index} style={[styles.TicketView, active === index ? { borderLeftWidth: 3, borderLeftColor: "#ffbb00" } : null]}>
               <View style={styles.LeftTicket}>
                 <View style={styles.IconWrapper}>
                   {/* <MaterialCommunityIcons
@@ -307,7 +305,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginLeft: 10,
   },
-  productView: {
+  TicketView: {
     borderLeftColor: "black",
 
     display: 'flex',
@@ -326,7 +324,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginHorizontal: 20,
   },
-  productImage: {
+  TicketImage: {
     width: 40,
     height: 60,
     alignSelf: 'center',

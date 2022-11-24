@@ -2,9 +2,9 @@
 import { Text, View, SafeAreaView, StyleSheet, Image, TouchableOpacity,Button } from 'react-native'
 import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addTicket, decrease, getTicketTotal, increase, newItem } from '../redux/Ticket';
+import { getTicketTotal,  } from '../redux/Ticket';
 import { Ionicons, FontAwesome, MaterialCommunityIcons } from "react-native-vector-icons";
-import { RadioButton } from 'react-native-paper';
+
 
 function CheckoutScreen({ navigation }) {
     const { totalCount, totalAmount } = useSelector((state) => state.ticket);
@@ -54,6 +54,7 @@ function CheckoutScreen({ navigation }) {
 
 
                 ),)}
+                
 
                 <View style={styles.btnGroup}>
                     <TouchableOpacity style={[styles.btn, selection === 1 ? [{ backgroundColor: "#ebebeb" },{borderWidth:1},{borderColor:"green"}] : { backgroundColor: "white" }]} onPress={() => setSelection(1)}>
